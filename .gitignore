@@ -11,3 +11,4 @@ pom.xml.asc
 .hg/
 .tern-port
 node_modules
+resources
