@@ -13,6 +13,8 @@
             :content "width=device-width, initial-scale=1.0"}]]
    [:body
     [:div#app [body]]
+    [:script {:type "text/javascript" :src "goog/base.js"}]
+    [:script {:type "text/javascript" :src "app.js"}]
     [:script {:type "text/javascript"
               :dangerouslySetInnerHTML {:__html "goog.require('demo.client');"}}]]])
 
