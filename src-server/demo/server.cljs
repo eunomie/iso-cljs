@@ -1,27 +1,13 @@
 (ns demo.server
   (:require [cljs.nodejs :as nodejs]
-            [reagent.core :as reagent]))
+            [site.tools :as tools]))
 
 (nodejs/enable-util-print!)
 
 (def express (nodejs/require "express"))
 
-(defn template []
-  [:html
-   [:head
-    [:meta {:charset "utf-8"}]
-    [:meta {:name "viewport"
-            :content "width=device-width, initial-scale=1.0"}]]
-   [:body
-    [:div#app
-     [:h1 "Server Rendering!!"]]]])
-
-(defn ^:export render-page [path]
-  (reagent/render-to-static-markup [template]))
-
-
 (defn handle-request [req res]
-  (.send res (render-page (.-path req))))
+  (.send res (tools/render-page (.-path req))))
 
 (defn -main []
   (let [app (express)]
