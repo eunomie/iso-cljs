@@ -4,8 +4,17 @@
 
 (def current-page (atom nil))
 
+(defn navigation []
+  [:div [:a {:href "/"} "Home Page"]
+   [:span {:style {:padding "5px"}}]
+   [:a {:href "/page-one"} "Page One"]
+   [:span {:style {:padding "5px"}}]])
+
 (defn home-page []
-  [:div [:h1 "Home Page"]])
+  [:div [navigation] [:h1 "Home Page"]])
+
+(defn page-one []
+  [:div [navigation] [:h1 "Page One"]])
 
 (defn app-view []
   [:div [@current-page]])
@@ -15,5 +24,9 @@
 (defroute "/" []
   (.log js/console "home page")
   (reset! current-page home-page))
+
+(defroute "/page-one" []
+  (.log js/console "page one")
+  (reset! current-page page-one))
 
 (reset! current-page home-page)
